@@ -1,0 +1,32 @@
+{
+  "name": "lambda-send-sms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "compile": "tsc",
+    "start": "ts-node-dev --respawn --transpile-only ./src/index.local.ts",
+    "build:lambda": "yarn install && yarn compile && rm -rf ./node_modules && yarn install --prod && cp -r  ./node_modules ./dist/node_modules && (cd dist; zip -r ../lambda.zip .) && rm -rf ./dist",
+    "test": "jest",
+    "test:watch": "jest --watchAll --detectOpenHandles --no-cache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.1",
+    "@types/twilio": "^3.19.3",
+    "dotenv": "^10.0.0",
+    "jest": "^27.0.6",
+    "jest-extended": "^0.11.5",
+    "ts-jest": "^27.0.5",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "joi": "^17.4.2",
+    "twilio": "^3.67.0"
+  }
+}
